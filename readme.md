@@ -5,5 +5,5 @@ Score Keeper made with HTML, CSS and Javascript
 
 Score Keeper feito com HTML, CSS e Javascript
 
-<img src="screenshot.png">
-
+<img src="img/screenshot1.png">
+<img src="img/screenshot2.png">
