@@ -1,70 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Score Board</title>
 
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 
     <!-- FONTS -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
 
-    <div class="headline">
-        <h1>SCORE BOARD</h1>
-        <h3>PLACAR</h3>
-    </div>
+    <nav>             
+        <div>
+            <img id="portuguese-lang" src="/img/brasil.png">
+            <img id="english-lang" src="/img/reino-unido.png">
+        </div>               
+    </nav>
 
-    <div class="score-container">
-       
-        <div class="scores">
-            <div>
-                <h3 class="player">PLAYER ONE</h3>
-                <div class="scorePlayer score-bkg1">            
-                    <h2 class="score-p1">0</h2>
-                </div>
-            </div>
-                    
-            <h3 class="score-h3">to</h3>
+    <section class="section">       
+
+        <div class="box score-container has-background-info">
+
+            <div class="box m-2">
+                <h1 class="title is-1 has-text-weight-bold board-title">SCORE BOARD</h1>
+            </div>   
             
-            <div>
-                <h3 class="player">PLAYER TWO</h3>
-                <div class="scorePlayer score-bkg2">
-                    <h2 class="score-p2">0</h2>
+            <div class="score columns box m-2">
+                
+                <div class="column is-two-fifths">
+                    <h3 class="player home">HOME</h3>
+                    <div class="scorePlayer has-background-black score-bkg1">
+                        <h2 class="score-p1">0</h2>
+                    </div>
+                </div>
+                
+                <div class="column">
+                    <h3 class="title">X</h3>
+                </div>
+                
+                <div class="column is-two-fifths">
+                    <h3 class="player away">AWAY</h3>
+                    <div class="scorePlayer has-background-black score-bkg2">
+                        <h2 class="score-p2">0</h2>
+                    </div>
+                </div>
+                
+                
+            </div>
+            
+
+            <div class="box columns is-centered m-2">
+                <div><label class="title is-3 label" for="playto">POINTS TO WIN:</label></div>                
+                <div class="select is-rounded max-point">
+                    <select name="playto"" id="playto">
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                    </select>
                 </div>
             </div>
+
+            <div class="buttons are-medium is-centered box columns m-2">
+                <button class="btn-p1 button is-info is-two-fifths has-text-dark">HOME +1</button>
+                <button class="btn-p2 button is-warning  is-two-fifths has-text-dark">AWAY +1</button>
+                <button class="btn-reset button is-danger is-two-fifths has-text-dark">RESET</button>
+            </div>
+
         </div>
 
-        <div class="max-point">
-            <h2>Playing to:</h2>
-            <select id="playto">
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-            </select>
-        </div>
-
-        <div class="button-container">
-            <button class="btn-p1">PLAYER ONE +1</button>
-            <button class="btn-p2">PLAYER TWO +1</button>
-            <button class="btn-reset">RESET</button>
-        </div>
-       
-    </div>
-
-    <div></div>
+        <div></div>
+    </section>
 
     <script src="script.js"></script>
 </body>
+
 </html>
