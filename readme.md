@@ -1,5 +1,5 @@
 # score-board
-<a href="https://mayckonrebecci.github.io/score-keeper/"><strong>SCORE BOARD PAGE</strong></a>
+<a href="https://mayckonrebecci.github.io/score-board/"><strong>SCORE BOARD PAGE</strong></a>
 
 Score Board made with HTML, CSS, Javascript and Bulma(CSS Framework)
 
