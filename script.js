@@ -4,24 +4,17 @@ const scoreBoardTitle = document.querySelector(".board-title");
 const labelPointsToWin = document.querySelector(".label");
 const playerHome = document.querySelector(".home");
 const playerAway = document.querySelector(".away");
-
-const scoreBoardP1 = document.querySelector(".score-bkg1");
-const scoreBoardP2 = document.querySelector(".score-bkg2");
-const scoreP1 = document.querySelector(".score-p1");
-const scoreP2 = document.querySelector(".score-p2");
-const btnP1 = document.querySelector(".btn-p1");
-const btnP2 = document.querySelector(".btn-p2");
-const btnReset = document.querySelector(".btn-reset");
-const playTo = document.querySelector("#playto");
+const htmlLang = document.querySelector("html");
 
 ptBrFlag.addEventListener("click", function(){
     scoreBoardTitle.innerText = "PLACAR";
     labelPointsToWin.innerText = "PONTOS PARA VENCER:";
     playerHome.innerText = "CASA";
     playerAway.innerText = "FORA";
-    btnP1.innerText = "CASA +1";
-    btnP2.innerText = "FORA +1";
+    homePlayer.button.innerText = "CASA +1";
+    awayPlayer.button.innerText = "FORA +1";
     btnReset.innerText = "RESETAR";
+    htmlLang.lang = "pt-br";
 })
 
 engUkFlag.addEventListener("click", function(){
@@ -29,13 +22,29 @@ engUkFlag.addEventListener("click", function(){
     labelPointsToWin.innerText = "POINTS TO WIN:";
     playerHome.textContent = "HOME";
     playerAway.innerText = "AWAY";
-    btnP1.innerText = "HOME +1";
-    btnP2.innerText = "AWAY +1";
+    homePlayer.button.innerText = "HOME +1";
+    awayPlayer.button.innerText = "AWAY +1";
     btnReset.innerText = "RESET";
+    htmlLang.lang = "en";
 })
 
-let p1_point = 1;
-let p2_point = 1;
+const btnReset = document.querySelector(".btn-reset");
+const playTo = document.querySelector("#playto");
+
+const homePlayer = {
+    score: 1,
+    button: document.querySelector(".btn-p1"),
+    display: document.querySelector(".score-p1"),
+    displayColor: document.querySelector(".score-bkg1")
+}
+
+const awayPlayer = {
+    score: 1,
+    button: document.querySelector(".btn-p2"),
+    display: document.querySelector(".score-p2"),
+    displayColor: document.querySelector(".score-bkg2")
+}
+
 let max_point = 3;
 let isGameOver = false;
 
@@ -44,46 +53,36 @@ playTo.addEventListener("change", function() {
     reset();
 });
 
-btnP1.addEventListener("click", function(){
+const updateScore = (player, opponent) => {
     if (!isGameOver) {
-        scoreP1.innerText = p1_point++;
-        if(p1_point === max_point + 1) {
+        player.display.innerText = player.score++;
+        if(player.score === max_point + 1) {
             isGameOver = true;
-            btnP1.disabled = true;
-            btnP2.disabled = true;
-            scoreBoardP1.classList.add("has-background-success");
-            scoreBoardP2.classList.add("has-background-danger");
+            player.button.disabled = true;
+            opponent.button.disabled = true;
+            player.displayColor.classList.add("has-background-success");
+            opponent.displayColor.classList.add("has-background-danger");           
         }
     }
+}
+
+homePlayer.button.addEventListener("click", function() {
+    updateScore(homePlayer, awayPlayer);
 })
 
-btnP2.addEventListener("click", function(){
-    if (!isGameOver){
-        scoreP2.innerText = p2_point++;
-        if(p2_point === max_point +1 ){
-            isGameOver = true;
-            btnP1.disabled = true;
-            btnP2.disabled = true;
-            scoreBoardP2.classList.add("has-background-success");
-            scoreBoardP1.classList.add("has-background-danger");
-        }
-    }
+awayPlayer.button.addEventListener("click", function() {
+    updateScore(awayPlayer, homePlayer);
 })
-
 
 const reset = () => {
-    scoreP1.innerText = 0;
-    scoreP2.innerText = 0;
-    p1_point = 1;
-    p2_point = 1;
     isGameOver = false;
-    btnP1.classList.add("is-info");
-    btnP2.classList.add("is-warning")
-    btnP1.disabled = false;
-    btnP2.disabled = false;
-    scoreBoardP1.classList.remove("has-background-success", "has-background-danger");
-    scoreBoardP2.classList.remove("has-background-success", "has-background-danger"); 
-};
 
+    for (let p of [homePlayer, awayPlayer]) {
+        p.display.innerText = 0;
+        p.score = 1;
+        p.button.disabled = false;
+        p.displayColor.classList.remove("has-background-success", "has-background-danger");
+    }
+};
 
 btnReset.addEventListener("click", reset);
