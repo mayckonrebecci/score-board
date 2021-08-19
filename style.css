@@ -3,30 +3,57 @@
 	--myBlack: #131313;
 }
 
+
+
+body, .score-container, .title-container, .scorePlayer, button {
+    margin: 0 auto;
+}
+
+body, nav, .scorePlayer {
+    display: grid;
+}
+
+nav div, .score {
+    display: flex;
+}
+
+.score-container, .title-container {
+    width: 50%;
+}
+
+.score, .scorePlayer {
+    align-items: center;
+    justify-content: center;
+}
+
+button, .player {    
+    font-size: 24px;
+    font-weight: 900;
+}
+
+
+button, .scorePlayer {
+    width: 11rem;
+}
+
 html {
     height: 100%;
 }
 
 body {
-    background: linear-gradient(to right, rgb(89, 99, 243), rgb(26, 29, 71));  
-    display: grid;
-    grid-template-columns: 1fr;
+    background: linear-gradient(to right, rgb(89, 99, 243), rgb(26, 29, 71));      
     width: 100%;
-    text-align: center;
-    margin: 0 auto;
+    text-align: center;    
     min-height: 100%;
 }
 
 nav {
-    display: grid;
     justify-content: flex-end;
     align-items: center;
     height: 80px;
 }
 
 nav div {
-    display: flex;
-    grid-template-columns: 1fr;
     background-color: var(--myWhite);
     border-radius: 50px;
     width: 80px;
@@ -44,32 +71,9 @@ nav img:hover {
     filter: brightness(70%);
 }
 
-.score-container, .title-container {
-    width: 50%;
-    margin: 0 auto;
-}
-
-
-.score {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.player {
-    font-size: 24px;
-    font-weight: bolder;
-}
-
 .scorePlayer {
-    display: grid;
-    grid-template-columns: 1fr;
-    margin: 0 auto;
     width: 11rem;
-    height: 11rem;    
-    align-items: center;
-    justify-content: center;
+    height: 11rem;        
     border-radius: 10px;    
     background-color: var(--myBlack);
     color: var(--myWhite);
@@ -83,9 +87,3 @@ nav img:hover {
     margin: 0 10px;
 }
 
-
-button {
-    font-weight: 900;
-    width: 180px;
-    margin: 0 auto;
-}
